@@ -21,10 +21,13 @@ namespace Gazi.OkulAppSube2BLG
         {
             InitializeComponent();
             this.frm = frm;
+            this.Hide();
+            
         }
-
+        
         private void btnAra_Click(object sender, EventArgs e)
         {
+           
             OgrenciBL obl = new OgrenciBL();
             Ogrenci ogr = obl.OgrenciBul(txtNumara.Text.Trim());
             if (ogr != null )
@@ -38,6 +41,7 @@ namespace Gazi.OkulAppSube2BLG
             {
                 MessageBox.Show("Öğrenci bulunamadı!!");
             }
+            
         }
     }
 }

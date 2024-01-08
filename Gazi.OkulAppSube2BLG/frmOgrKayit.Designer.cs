@@ -56,6 +56,7 @@
             this.grpOgrenci.TabIndex = 0;
             this.grpOgrenci.TabStop = false;
             this.grpOgrenci.Text = "Öğrenci Bilgileri";
+            this.grpOgrenci.Enter += new System.EventHandler(this.grpOgrenci_Enter);
             // 
             // txtNumara
             // 

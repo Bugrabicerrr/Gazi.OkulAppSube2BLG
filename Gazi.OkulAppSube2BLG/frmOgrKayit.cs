@@ -26,6 +26,8 @@ namespace Gazi.OkulAppSube2BLG
         //Garbage Collector
         private void btnKaydet_Click(object sender, EventArgs e)
         {
+            btnSil.Enabled = false;
+            btnGuncelle.Enabled = false;
             try
             {
                 //var ogrenci = new Ogrenci();
@@ -36,7 +38,11 @@ namespace Gazi.OkulAppSube2BLG
                 var obl = new OgrenciBL();
                 bool sonuc = obl.OgrenciEkle(new Ogrenci { Ad = txtAd.Text.Trim(), Soyad = txtSoyad.Text.Trim(), Numara = txtNumara.Text.Trim() });
                 MessageBox.Show(sonuc ? "Ekleme başarılı!" : "Ekleme başarısız!!");
+                textBox.Clear();
+
             }
+
+
             catch (SqlException ex)
             {
                 switch (ex.Number)
@@ -57,20 +63,31 @@ namespace Gazi.OkulAppSube2BLG
 
         private void btnBul_Click(object sender, EventArgs e)
         {
+
             var frm = new frmOgrBul(this);
             frm.Show();
+            textBox.Clear();
+            btnSil.Enabled = true;
+            btnGuncelle.Enabled = true;
         }
 
         private void btnSil_Click(object sender, EventArgs e)
         {
             var obl = new OgrenciBL();
+            textBox.Clear();
             MessageBox.Show(obl.OgrenciSil(Ogrenciid) ? "Silme Başarılı" : "Başarısız!");
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             var obl = new OgrenciBL();
+            textBox.Clear();
             MessageBox.Show(obl.OgrenciGuncelle(new Ogrenci { Ad = txtAd.Text.Trim(), Soyad = txtSoyad.Text.Trim(), Numara = txtNumara.Text.Trim(), Ogrenciid = Ogrenciid }) ? "Güncelleme Başarılı" : "Güncelleme Başarısız!");
+        }
+
+        private void grpOgrenci_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 
